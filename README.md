@@ -143,7 +143,7 @@ Since all three deterministic factors indicate female, the algorithm classifies 
 
 This algorithm typically has a time complexity of `O(1)`, as it processes a fixed number of predefined factors and applies a predetermined set of conditional decision rules. Since the number of factors and logical branches does not increase with input size, the runtime remains constant regardless of external scale. When applied to a dataset containing `n` independent instances, the total time complexity becomes `O(n)` due to repeated constant-time evaluations. 
 
-The space complexity is also `O(1)` per evaluation, as the algorithm requires only a fixed amount of memory to store input parameters and intermediate decision variables. No additional data structures that grow with input size are used.
+The space complexity is also typically `O(1)` per evaluation, as the algorithm requires only a fixed amount of memory to store input parameters and intermediate decision variables. No additional data structures that grow with input size are used.
 
 # Real-World Applications
 
