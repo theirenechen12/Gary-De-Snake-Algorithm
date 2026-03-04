@@ -25,7 +25,7 @@ d = Femininity of voice (1–5 = masculine, 6–10 = feminine, inf = unknown)
 
 These four parameters are stored in an array `[a, b, c, d]` where the array represents the character we want to determine the gender of. If any of these four parameters are not defined, we define them as `float('inf')` in Python (`INF`), as when unknown, this leads to multiple possibilities, which are left unknown. A fifth parameter `e` can also be added, though `e = Name of character` and is optional, mostly for output purposes. If `e` is added, the array would instead be `[a, b, c, d, e]`.
 
-We define the `DetermineLineage(character)` function that determines the character's lineage. We need this function to merge b and c into a single variable, lineage. 
+We define the `DetermineLineage(character)` function that determines the character's lineage. We need this function to merge `b` and `c` into a single variable, lineage. 
 
 ```
 FUNCTION DetermineCharacterLineage(character):
@@ -53,7 +53,7 @@ FUNCTION DetermineCharacterLineage(character):
 
 END FUNCTION
 ```
-The `determine_character_lineage` function merges these two variables (b (lineage) and c (opposing lineage)) into a single factor: lineage. If both values are not defined (`INF`), it returns `INF`. If b and c are defined, but equal to each other, the result is still `INF` because the contrast between lineages is required for lineage to be a meaningful factor. If either b or c is not defined, the result is also `INF` because both must be known to determine dominance. If b and c are opposite (0 vs 1), then the lineage gender is returned based on the value of b. Any unexpected values default to `INF`. Thus, lineage only becomes deterministic when both lineages are known and opposite.
+The `determine_character_lineage` function merges these two variables (`b` (lineage) and `c` (opposing lineage)) into a single factor: lineage. If both values are not defined (`INF`), it returns `INF`. If `b` and `c` are defined, but equal to each other, the result is still `INF` because the contrast between lineages is required for lineage to be a meaningful factor. If either `b` or `c` is not defined, the result is also `INF` because both must be known to determine dominance. If `b` and `c` are opposite (`0` vs `1`), then the lineage gender is returned based on the value of `b`. Any unexpected values default to `INF`. Thus, lineage only becomes deterministic when both lineages are known and opposite.
 
 Now let's define the main function `DetermineGender(character)`:
 
@@ -124,18 +124,18 @@ FUNCTION DetermineGender(character):
 
 END FUNCTION
 ```
-We first define the parameters ``object_gender`` (derived from a), ``lineage_gender`` (derived from the merged variable obtained for b and c from the ``DetermineCharacterLineage(character)`` function), ``voice_gender`` (d), and the ``name`` (e). These values are stored in a list and extracted individually inside the main function. The lineage value is obtained through a separate function that merges the lineage and opposing lineage into a single deterministic factor.
+We first define the parameters `object_gender` (derived from `a`), `lineage_gender` (derived from the merged variable obtained for `b` and `c` from the `DetermineCharacterLineage(character)` function), `voice_gender` (`d`), and the `name` (`e`). These values are stored in a list and extracted individually inside the main function. The lineage value is obtained through a separate function that merges the lineage and opposing lineage into a single deterministic factor.
 
 The algorithm does not prioritize one factor over another. Instead, it evaluates all three factors (object, lineage, and voice) simultaneously and matches them against fifteen explicitly defined cases. These cases represent all consistent male combinations, all consistent female combinations, and one final case for conflicting or fully unknown inputs.
 
-If the ``object_gender``, ``lineage_gender``, and ``voice_gender`` are consistent (e.g., all indicate female), the gender is determined with the strongest justification (by object, lineage, and voice). If only one or two deterministic factors are available and they agree, gender is determined based on those available factors. If the factors conflict or are entirely unknown, the gender cannot be determined.
+If the `object_gender`, `lineage_gender`, and `voice_gender` are consistent (e.g., all indicate female), the gender is determined with the strongest justification (by object, lineage, and voice). If only one or two deterministic factors are available and they agree, gender is determined based on those available factors. If the factors conflict or are entirely unknown, the gender cannot be determined.
 
 For example, in Gary’s case:
-	•	``object_gender = 1`` (female)
-	•	``lineage_gender = 1`` (female, from matriarchy vs patriarchy)
-	•	``voice_gender = 6`` (feminine range)
+	•	`object_gender = 1` (female)
+	•	`lineage_gender = 1` (female, from matriarchy vs patriarchy)
+	•	`voice_gender = 6` (feminine range)
 
-Since all three deterministic factors indicate female, the algorithm classifies Gary as female (a female pit viper) by object, lineage, and voice, which is true based on the evidence given above and her role in *Zootopia 2*.
+Since all three deterministic factors indicate female, the algorithm classifies Gary as female by object, lineage, and voice, which is true based on the evidence given above and her role in *Zootopia 2*.
 
 # Application
 
