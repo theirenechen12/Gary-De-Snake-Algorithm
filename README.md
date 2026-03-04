@@ -23,7 +23,7 @@ c = Gender of opposing lineage (0 = male, 1 = female)
 d = Femininity of voice (1–5 = masculine, 6–10 = feminine, inf = unknown)
 ```
 
-These four parameters are stored in an array `[a, b, c, d]` where the array represents the character we want to determine the gender of. If any of these four parameters are not defined, we define them as `float('inf')` in Python (INF), as when unknown, this leads to multiple possibilities, which are left unknown. A fifth parameter `e` can also be added, though `e = Name of character` and is optional, mostly for printing purposes. If `e` is added, the array would instead be `[a, b, c, d, e]`.
+These four parameters are stored in an array `[a, b, c, d]` where the array represents the character we want to determine the gender of. If any of these four parameters are not defined, we define them as `float('inf')` in Python (`INF`), as when unknown, this leads to multiple possibilities, which are left unknown. A fifth parameter `e` can also be added, though `e = Name of character` and is optional, mostly for output purposes. If `e` is added, the array would instead be `[a, b, c, d, e]`.
 
 We define the `DetermineLineage(character)` function that determines the character's lineage. We need this function to merge b and c into a single variable, lineage. 
 
@@ -53,7 +53,7 @@ FUNCTION DetermineCharacterLineage(character):
 
 END FUNCTION
 ```
-The `determine_character_lineage` function merges these two variables (b (lineage) and c (opposing lineage)) into a single factor: lineage. If both values are not defined (INF), it returns INF. If b and c are defined, but equal to each other, the result is still INF because the contrast between lineages is required for lineage to be a meaningful factor. If either b or c is not defined, the result is still INF because both must be known to determine dominance. If b and c are opposite (0 vs 1), then the lineage gender is returned based on the value of b. Any unexpected values default to INF. Thus, lineage only becomes deterministic when both lineages are known and opposite.
+The `determine_character_lineage` function merges these two variables (b (lineage) and c (opposing lineage)) into a single factor: lineage. If both values are not defined (`INF`), it returns `INF`. If b and c are defined, but equal to each other, the result is still `INF` because the contrast between lineages is required for lineage to be a meaningful factor. If either b or c is not defined, the result is also `INF` because both must be known to determine dominance. If b and c are opposite (0 vs 1), then the lineage gender is returned based on the value of b. Any unexpected values default to `INF`. Thus, lineage only becomes deterministic when both lineages are known and opposite.
 
 Now let's define the main function `DetermineGender(character)`:
 
