@@ -1,7 +1,7 @@
 # Summary
 The Gary De’Snake Algorithm (GDSA) is an algorithm that I myself developed during my free time as a master's student at California State University, Los Angeles. I developed this algorithm not only as someone passionate about applying computer science to the real world, but also as someone passionate about social dynamics in film and entertainment as a whole. This algorithm combines my personal interests with my programming skills to develop an algorithm that uses various factors to determine gender, survival, hiring decisions, financial or credit risk, health risk, and similar fields.
 
-# Origin
+# Background
 This algorithm was first developed with one of my favorite characters, Gary De'Snake, in mind; it is even named after her, as she provides the foundation for this algorithm. Before getting into the algorithm, who is Gary De'Snake? Gary De'Snake is a female pit viper and the tritagonist of *Zootopia 2*, which premiered on November 26, 2025. She is a 10-meter-long blue-scaled pit viper (*Trimeresurus insularis*), and in real life, these can be found in eastern Java and the Lesser Sunda Islands. While the pit viper is often seen as poisonous, her role as one of the heroines of *Zootopia 2* defies those stereotypes.
 
 Ever since *Zootopia 2*'s release, Gary has been rising in popularity, especially in Asian countries like China and Vietnam. While many claim that Gary is a male character and she is referred to with male pronouns throughout the film, there is evidence that she is actually, in fact, a girl.
@@ -12,7 +12,7 @@ Ever since *Zootopia 2*'s release, Gary has been rising in popularity, especiall
 
 All of that proves Gary De'Snake is a female character rather than a male, and these traits provide a solid foundation for this algorithm.
 
-# The Algorithm
+# Algorithm Implementation
 
 As previously discussed, this algorithm derives from the reasoning behind why Gary De'Snake is actually a female character. The main parameters we discussed include her Anti-Venom Pen (female), her family legacy (matriarchal), her opposing family due to family feud (patriarchal), and the extent to which her voice is feminized/feminine (greater than 5 on a scale from 0 to 10). This algorithm applies these four parameters in a general setting, respectively, where:
 
@@ -139,7 +139,7 @@ For example, in Gary’s case:
 
 Since all three deterministic factors indicate female, the algorithm classifies Gary as female by object, lineage, and voice, which is true based on the evidence given above and her role in *Zootopia 2*.
 
-# Application
+# Real-World Applications
 
 This algorithm is theoretical and requires several parameters to determine gender, so it is not always accurate. In addition, it is more used for symbolic gender. It does not only apply to gender, but to other real-world applications, such as:
 1. Hiring or selection decisions for a job or college
