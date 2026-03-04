@@ -139,6 +139,12 @@ For example, in Gary’s case:
 
 Since all three deterministic factors indicate female, the algorithm classifies Gary as female by object, lineage, and voice, which is true based on the evidence given above and her role in *Zootopia 2*.
 
+# Time Complexity
+
+The Gary De’Snake Algorithm (GDSA) operates in constant time, `O(1)`, for a single evaluation, as it processes a fixed number of predefined factors and applies a predetermined set of conditional decision rules. Since the number of factors and logical branches does not increase with input size, the runtime remains constant regardless of external scale. When applied to a dataset containing `n` independent instances, the total runtime becomes `O(n)` due to repeated constant-time evaluations. 
+
+The space complexity is also `O(1)` per evaluation, as the algorithm requires only a fixed amount of memory to store input parameters and intermediate decision variables. No additional data structures that grow with input size are used.
+
 # Real-World Applications
 
 This algorithm is theoretical and requires several parameters to determine gender, so it is not always accurate. In addition, it is more used for symbolic gender. It does not only apply to gender, but to other real-world applications, such as:
