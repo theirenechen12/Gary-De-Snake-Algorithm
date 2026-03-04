@@ -10,7 +10,7 @@ Ever since *Zootopia 2* came out, Gary has been rising in popularity, especially
 3. The De'Snake and Lynxley have an ongoing family feud, and because Ebenezer Lynxley successfully framed Agnes De'Snake for the murder of his tortoise maid, this led to the reputation of reptiles being destroyed and the families hating each other. Gary was the former "partner" turned archenemy of Pawbert Lynxley, the great-grandson of Ebenezer Lynxley and the son of Milton Lynxley (the film's main antagonist), and she was smuggled into Zootopia by Pawbert so he could manipulate her to protect his great-grandfather's "legacy" so he can be loved by his father. Meanwhile, Gary's motive was to prove her great-grandmother was the true founder of Zootopia. While the De'Snake family is a matriarchy, the Lynxley family is a patriarchy, and as such, Gary has feminist symbols.
 4. While Gary was voiced by Ke Huy Quan (Jonathan Ke Quan), a Vietnamese-American male actor whose accolades include an Academy Award, a Golden Globe Award, and a Saturn Award, in addition to a BAFTA nomination, Quan's voice as Gary is more childlike and feminine/neutral compared to his normal voice in other roles.
 
-All of that proves Gary De'Snake is a female character, and these traits build the foundation for this algorithm.
+All of that proves Gary De'Snake is a female character rather than male, and these traits build the foundation for this algorithm.
 
 # The Algorithm
 
@@ -124,18 +124,18 @@ FUNCTION DetermineGender(character):
 
 END FUNCTION
 ```
-We first define the parameters object_gender (derived from a), lineage_gender (derived from the merged variable obtained for b and c from the ``DetermineCharacterLineage(character)`` function), voice_gender (d), and the character’s name (e). These values are stored in a list and extracted individually inside the main function. The lineage value is obtained through a separate function that merges the lineage and opposing lineage into a single deterministic factor.
+We first define the parameters ``object_gender`` (derived from a), ``lineage_gender`` (derived from the merged variable obtained for b and c from the ``DetermineCharacterLineage(character)`` function), ``voice_gender`` (d), and the ``name`` (e). These values are stored in a list and extracted individually inside the main function. The lineage value is obtained through a separate function that merges the lineage and opposing lineage into a single deterministic factor.
 
 The algorithm does not prioritize one factor over another. Instead, it evaluates all three factors (object, lineage, and voice) simultaneously and matches them against fifteen explicitly defined cases. These cases represent all consistent male combinations, all consistent female combinations, and one final case for conflicting or fully unknown inputs.
 
-If the object, lineage, and voice are consistent (e.g., all indicate female), the gender is determined with the strongest justification (by object, lineage, and voice). If only one or two deterministic factors are available and they agree, gender is determined based on those available factors. If the factors conflict or are entirely unknown, the gender cannot be determined.
+If the ``object_gender``, ``lineage_gender``, and ``voice_gender`` are consistent (e.g., all indicate female), the gender is determined with the strongest justification (by object, lineage, and voice). If only one or two deterministic factors are available and they agree, gender is determined based on those available factors. If the factors conflict or are entirely unknown, the gender cannot be determined.
 
 For example, in Gary’s case:
-	•	Object gender a = 1 (female)
-	•	Lineage value = 1 (female, from matriarchy vs patriarchy)
-	•	Voice score d = 6 (feminine range)
+	•	``object_gender = 1`` (female)
+	•	``lineage_gender = 1`` (female, from matriarchy vs patriarchy)
+	•	``voice_gender = 6`` (feminine range)
 
-Since all three deterministic factors indicate female, the algorithm classifies Gary as female by object, lineage, and voice.
+Since all three deterministic factors indicate female, the algorithm classifies Gary as female (a female pit viper) by object, lineage, and voice, which is true based on the evidence given above and her role in *Zootopia 2*.
 
 # Application
 
