@@ -139,7 +139,7 @@ This algorithm is theoretical and only uses several parameters to determine gend
    b = Academic or mentorship background (0 = not competitive, 1 = competitive, inf = unknown)
    c = Academic or mentorship background of competitor (0 = not competitive, 1 = competitive, inf = unknown)
    d = Interview performance (1–5 = low, 6–10 = high, inf = unknown)
-   ``
+   ```
 2. Survival analysis for a major disaster
    ```
    a = Lifeboat access or personal gear (0 = no, 1 = has, inf = unknown)
