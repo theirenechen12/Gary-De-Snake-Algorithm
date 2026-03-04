@@ -155,9 +155,9 @@ pawbert = [float('inf'),0,1,4, "Pawbert Lynxley"] #Pawbert Lynxley has no object
 pawbert_and_gary = [1,float('inf'),float('inf'),5, "Pawbert and Gary"] #Pawbert and Gary have a shared object, Gary's Anti-venom pen, which is feminine, but their lineage and opposing lineage are unknown because the two are opposites and their voice is the average of both, which is male because it equals 5. Therefore, the gender of Pawbert and Gary cannot be determined.
 nibbles = [float('inf'),float('inf'),float('inf'),6, "Nibbles Maplestick"]#Nibbles Maplestick has no object to determine gender, she has no lineage, but her voice is feminine. Therefore, by voice, Nibbles Maplestick is female. 
 
-
+determine_gender(gary) #base case
+determine_gender(judy)
 determine_gender(nick)
-determine_gender(gary)
 determine_gender(pawbert)
 determine_gender(pawbert_and_gary)
 determine_gender(nibbles)
