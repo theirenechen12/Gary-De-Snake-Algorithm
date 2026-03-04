@@ -1,5 +1,5 @@
 # Summary
-The Gary De’Snake Algorithm (GDSA) is an algorithm that I developed, which deterministically classifies a person’s gender using various elements. It handles missing and conflicting data through decision rules
+The Gary De’Snake Algorithm (GDSA) is an algorithm that I developed, which deterministically classifies an individual’s gender using various elements. It handles missing and conflicting data through decision rules
 
 # Origin
 Gary De'Snake is a pit viper and the tritagonist of *Zootopia 2*, which was released on November 26, 2025. She is a 10-meter-long blue-scaled pit viper (*Trimeresurus insularis*), and in real life, these can be found in eastern Java and the Lesser Sunda Islands. While the pit viper is often seen as poisonous, her role as one of the heroines of *Zootopia 2* defies those stereotypes.
@@ -23,113 +23,123 @@ c = Gender of opposing lineage (0 = male, 1 = female)
 d = Femininity of voice (1–5 = masculine, 6–10 = feminine, inf = unknown)
 ```
 
-These four parameters are stored in an array `[a, b, c, d]` where the array represents the character. If any of these four parameters are not defined, we define them as `float('inf')` in Python, as when unknown, this leads to multiple possibilities, which are left unknown. A fifth parameter `e` can also be added, though `e = Name of character` and is optional, mostly for printing purposes. If `e` is added, the array would instead be `[a, b, c, d, e]`.
+These four parameters are stored in an array `[a, b, c, d]` where the array represents the individual we want to determine the gender of. If any of these four parameters are not defined, we define them as `float('inf')` in Python (INF), as when unknown, this leads to multiple possibilities, which are left unknown. A fifth parameter `e` can also be added, though `e = Name of character` and is optional, mostly for printing purposes. If `e` is added, the array would instead be `[a, b, c, d, e]`.
 
-We define the `DetermineObject(character)` function, which determines whether the character has an object.
+We define the `DetermineLineage(character)` function that determines the character's lineage. We need this function to merge b and c into a single variable, lineage. 
 
 ```
-FUNCTION DetermineObject(character):
-    IF character.object == INF:
-        RETURN False`
+FUNCTION DetermineCharacterLineage(character):
+
+    lineage = character[1]
+    opposing_lineage = character[2]
+
+    IF lineage == INF AND opposing_lineage == INF:
+        RETURN INF
+
+    ELSE IF lineage == opposing_lineage:
+        RETURN INF
+
+    ELSE IF lineage == INF OR opposing_lineage == INF:
+        RETURN INF
+
+    ELSE IF lineage == 0 AND opposing_lineage == 1:
+        RETURN 0
+
+    ELSE IF lineage == 1 AND opposing_lineage == 0:
+        RETURN 1
+
     ELSE:
-        RETURN True
+        RETURN INF
+
 END FUNCTION
 ```
-
-If the value for `character.object` is not defined (`INF`), it returns `False`. Otherwise, it returns `True`.
-
-We then define the `DetermineLineage(character)` function, which determines the lineage of the character.
-
-```
-FUNCTION DetermineLineage(character):
-    IF character.lineage == INF AND character.enemy_lineage == INF:
-        RETURN INF  // Cannot determine gender
-    ELSE IF character.lineage == character.enemy_lineage:
-        RETURN INF  // Conflicting same-gender lineages
-    ELSE IF character.lineage != INF AND character.enemy_lineage == INF:
-        RETURN INF  // No enemy lineage to compare
-    ELSE IF character.lineage == INF AND character.enemy_lineage != INF:
-        RETURN INF  // No lineage to compare
-    ELSE IF character.lineage == 0 AND character.enemy_lineage == 1:
-        RETURN 0  // Male lineage vs female enemy
-    ELSE IF character.lineage == 1 AND character.enemy_lineage == 0:
-        RETURN 1  // Female lineage vs male enemy
-    ELSE:
-        RETURN INF  // Ambiguous
-END FUNCTION
-```
-If both values for `character.object` are undefined, we return `INF` because the value is not defined. If the lineage gender values are equal, we also return the same value because if the lineages are the same, it does not affect the gender of the character. If either the character or enemy lineage is undefined, it also returns undefined as it also does not affect the gender of the character. If the lineages are opposite numbers 0 and 1, if the character lineage is female, it returns 1, otherwise it returns 0. If none of the parameter fits, it also returns undefined.
+The `determine_character_lineage` function merges these two variables (b (lineage) and c (opposing lineage)) into a single factor: lineage. If both values are not defined (INF), it returns INF. If b and c are defined, but equal to each other, the result is still INF because the contrast between lineages is required for lineage to be a meaningful factor. If either b or c is not defined, the result is still INF because both must be known to determine dominance. If b and c are opposite (0 vs 1), then the lineage gender is returned based on the value of b. Any unexpected values default to INF. Thus, lineage only becomes deterministic when both lineages are known and opposite.
 
 Now let's define the main function `DetermineGender(character)`:
 
 ```
 FUNCTION DetermineGender(character):
-    object_present = DetermineObject(character)
-    lineage_value = DetermineLineage(character)
-    voice = character.voice
-    name = character.name
 
-    IF voice == INF:  // No voice
-        IF NOT object_present:  // No object
-            IF lineage_value == INF:
-                PRINT name + "'s gender cannot be determined"
-            ELSE IF lineage_value == 0:
-                PRINT name + " is male but no object or voice"
-            ELSE IF lineage_value == 1:
-                PRINT name + " is female but no object or voice"
-        ELSE:  // Object exists
-            IF lineage_value == INF:
-                IF character.object == 0:
-                    PRINT name + " is male but no lineage or voice"
-                ELSE IF character.object == 1:
-                    PRINT name + " is female but no lineage or voice"
-            ELSE:
-                IF character.object == 0 AND lineage_value == 0:
-                    PRINT name + " is male but no voice"
-                ELSE IF character.object == 1 AND lineage_value == 1:
-                    PRINT name + " is female but no voice"
-                ELSE:
-                    PRINT name + "'s gender cannot be determined"
-    ELSE:  // Voice exists
-        IF NOT object_present:  // No object
-            IF lineage_value == INF:
-                IF voice <= 5:
-                    PRINT name + " is male but no lineage or object"
-                ELSE IF voice > 5:
-                    PRINT name + " is female but no lineage or object"
-            ELSE:
-                IF lineage_value == 0 AND voice <= 5:
-                    PRINT name + " is male but no object"
-                ELSE IF lineage_value == 1 AND voice > 5:
-                    PRINT name + " is female but no object"
-                ELSE:
-                    PRINT name + "'s gender cannot be determined"
-        ELSE:  // Object exists
-            IF lineage_value == INF:
-                IF character.object == 0 AND voice <= 5:
-                    PRINT name + " is male but no lineage"
-                ELSE IF character.object == 1 AND voice > 5:
-                    PRINT name + " is female but no lineage"
-                ELSE:
-                    PRINT name + "'s gender cannot be determined"
-            ELSE:
-                IF character.object == 0 AND lineage_value == 0 AND voice <= 5:
-                    PRINT name + " is male in all ways"
-                ELSE IF character.object == 1 AND lineage_value == 1 AND voice > 5:
-                    PRINT name + " is female in all ways"
-                ELSE IF character.object == 0 AND lineage_value == 0 AND voice <= 5:
-                    PRINT name + " is male, object insignificant"
-                ELSE IF character.object == 1 AND lineage_value == 1 AND voice > 5:
-                    PRINT name + " is female, object insignificant"
-                ELSE:
-                    PRINT name + "'s gender cannot be determined"
+    object_gender  = character[0]
+    lineage_gender = DetermineCharacterLineage(character)
+    voice_gender   = character[3]
+    name           = character[4]
+
+    ------------------------------------------------
+    -- MALE CASES
+    ------------------------------------------------
+
+    IF object_gender == 0 AND lineage_gender == 0 AND 1 ≤ voice_gender ≤ 5:
+        PRINT name + " is male by object, lineage, and voice"
+
+    ELSE IF object_gender == 0 AND lineage_gender == 0 AND voice_gender == INF:
+        PRINT name + " is male by object and lineage"
+
+    ELSE IF object_gender == 0 AND lineage_gender == INF AND 1 ≤ voice_gender ≤ 5:
+        PRINT name + " is male by object and voice"
+
+    ELSE IF object_gender == 0 AND lineage_gender == INF AND voice_gender == INF:
+        PRINT name + " is male by object alone"
+
+    ELSE IF object_gender == INF AND lineage_gender == 0 AND 1 ≤ voice_gender ≤ 5:
+        PRINT name + " is male by lineage and voice"
+
+    ELSE IF object_gender == INF AND lineage_gender == 0 AND voice_gender == INF:
+        PRINT name + " is male by lineage alone"
+
+    ELSE IF object_gender == INF AND lineage_gender == INF AND 1 ≤ voice_gender ≤ 5:
+        PRINT name + " is male by voice alone"
+
+    ------------------------------------------------
+    -- FEMALE CASES
+    ------------------------------------------------
+
+    ELSE IF object_gender == 1 AND lineage_gender == 1 AND 6 ≤ voice_gender ≤ 10:
+        PRINT name + " is female by object, lineage, and voice"
+
+    ELSE IF object_gender == 1 AND lineage_gender == 1 AND voice_gender == INF:
+        PRINT name + " is female by object and lineage"
+
+    ELSE IF object_gender == 1 AND lineage_gender == INF AND 6 ≤ voice_gender ≤ 10:
+        PRINT name + " is female by object and voice"
+
+    ELSE IF object_gender == 1 AND lineage_gender == INF AND voice_gender == INF:
+        PRINT name + " is female by object alone"
+
+    ELSE IF object_gender == INF AND lineage_gender == 1 AND 6 ≤ voice_gender ≤ 10:
+        PRINT name + " is female by lineage and voice"
+
+    ELSE IF object_gender == INF AND lineage_gender == 1 AND voice_gender == INF:
+        PRINT name + " is female by lineage alone"
+
+    ELSE IF object_gender == INF AND lineage_gender == INF AND 6 ≤ voice_gender ≤ 10:
+        PRINT name + " is female by voice alone"
+
+    ------------------------------------------------
+    -- UNKNOWN / CONFLICTING CASE
+    ------------------------------------------------
+
+    ELSE:
+        PRINT name + "'s gender cannot be determined"
+
 END FUNCTION
 ```
-We first define the parameters `object_present` (whether the object is present), `lineage value` (the value of lineage), the voice parameter scale (d), and the name of the character (e). We can add them to a list, or we can define them separately as revealed in the pseudocode. The case has several branches: whether the voice is deterministic and if so what it determines, then inside that branch is whether the object is deterministic, and a third branch for lineage. If none are deterministic, they do not affect the character's gender and therefore it cannot be determined. If the object AND lineage AND voice all are consistent, it determines the gender most accurately. If a parameter is missing it warns as to which parameter is missing. For the Gary example, lets assume her voice score is 6. Given her anti-venom pen (a = 1), her lineage value (1), and her voice range (6), all of that proves she is in fact a female.
+We first define the parameters object_gender (derived from a), lineage_gender (derived from the merged variable obtained for b and c from the ``DetermineCharacterLineage(character)`` function), voice_gender (d), and the character’s name (e). These values are stored in a list and extracted individually inside the main function. The lineage value is obtained through a separate function that merges the lineage and opposing lineage into a single deterministic factor.
+
+The algorithm does not prioritize one factor over another. Instead, it evaluates all three factors (object, lineage, and voice) simultaneously and matches them against fifteen explicitly defined cases. These cases represent all consistent male combinations, all consistent female combinations, and one final case for conflicting or fully unknown inputs.
+
+If the object, lineage, and voice are consistent (e.g., all indicate female), the gender is determined with the strongest justification (by object, lineage, and voice). If only one or two deterministic factors are available and they agree, gender is determined based on those available factors. If the factors conflict or are entirely unknown, the gender cannot be determined.
+
+For example, in Gary’s case:
+	•	Object gender a = 1 (female)
+	•	Lineage value = 1 (female, from matriarchy vs patriarchy)
+	•	Voice score d = 6 (feminine range)
+
+Since all three deterministic factors indicate female, the algorithm classifies Gary as female by object, lineage, and voice.
 
 # Application
 
-This algorithm is theoretical and only uses several parameters to determine gender, so it is not always accurate. In addition, it is more used for symbolic gender. It does not only apply to gender, but to other real world applications, such as:
+This algorithm is theoretical and requires several parameters to determine gender, so it is not always accurate. In addition, it is more used for symbolic gender. It does not only apply to gender, but to other real-world applications, such as:
 1. Hiring or selection decisions for a job or college
    ```
    a = Candidate’s portfolio and achievements (0 = weak, 1 = strong, inf = unknown)
@@ -159,5 +169,5 @@ This algorithm is theoretical and only uses several parameters to determine gend
    d = Biomarkers / clinical measurements (1–5 = low risk, 6–10 = high risk, inf = unknown)
    ```
 
-All of these applications can help predict, though it has limitations, since only four factors are taken into account. If a factor is missing it may give the wrong solution due to missing factors.
+All of these applications can help predict, though it has limitations, since only four factors are taken into account. If a factor is missing, it may give an incorrect solution due to missing factors.
 
