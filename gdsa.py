@@ -147,7 +147,7 @@ def determine_gender(character):
 
     
         
-#Test cases for the algorithm. All are Zootopia characters.
+#Test cases for the algorithm. All are characters from the Zootopia franchise.
 gary = [1,1,0,6,"Gary De'Snake"] #Base case. We are developing an algorithm to disprove Gary De'Snake's claim to be male. In the story, she has an anti-venom pen, which is a feminine object because it is voiced by Auliʻi Cravalho, a female voice actor, and because she comes from a matriarchy and opposes patriarchy, her lineage is female. Although she is voiced by Ke Huy Quan, who is male, he made her voice more feminine, which exceeds the 5 threshold due to the pitch, so her voice is feminine. Therefore, by object, lineage, and voice, Gary De'Snake is female, disproving the claim that Gary De'Snake is male. This is the base case the algorithm aims to prove, laying the foundation for the algorithm.
 judy = [1,float('inf'),float('inf'),10,"Judy Hopps"] #Judy Hopps has a carrot pen, which is a feminine object, but her lineage and opposing lineage are unknown, and her voice is feminine. Therefore, by object and voice, Judy Hopps is female.
 nick = [float('inf'),1,float('inf'),3,"Nick Wilde"] #Nick Wilde does not have a clear gendered object; his lineage and opposing lineage are unknown, but his voice is masculine. Therefore, by voice, Nick Wilde is male.
