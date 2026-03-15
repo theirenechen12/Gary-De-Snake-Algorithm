@@ -133,7 +133,7 @@ If the `object_gender`, `lineage_gender`, and `voice_gender` are consistent (e.g
 For example, in Gary’s case:
 ```
 	•	object_gender = 1 (female)
-	•	lineage_gender = 1 (female, from matriarchy vs patriarchy) \n
+	•	lineage_gender = 1 (female, from matriarchy vs patriarchy)
 	•	voice_gender = 6 (feminine range)
 ```
 
