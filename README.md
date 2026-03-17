@@ -178,3 +178,48 @@ This algorithm is theoretical and requires several parameters to determine gende
    ```
 
 All of these applications can help predict outcomes, though they have limitations because only four factors are considered. If a factor is missing, it may lead to an incorrect solution.
+
+# Python
+
+What is also provided is the gdsa.py file, which contains the full implementation of the Gary De’Snake Algorithm. You can run this file to test the algorithm in practice. Follow these steps to get started:
+
+1. Install Python
+Make sure Python 3.x is installed on your system. You can download it from https://www.python.org/downloads/￼.
+
+To check if Python is installed, open your terminal (Command Prompt on Windows, Terminal on Mac/Linux) and run:
+```
+python --version
+```
+or
+```
+python3 --version
+```
+You should see a version like ```Python 3.14.3```.
+
+2. Download the Repository
+Clone or download the repository to your local machine:
+```
+git clone https://github.com/theirenechen12/Gary-De-Snake-Algorithm.git
+cd Gary-De-Snake-Algorithm
+```
+Or download as a ZIP and unzip it.
+
+3. Run the Script
+In the terminal, navigate to the folder containing gdsa.py and run:
+```
+python gdsa.py
+```
+or
+```
+python3 gdsa.py
+```
+This will execute the test cases included in the script and print the gender determination for each character.
+
+4. Modify or Add Characters
+You can create your own test cases by adding lists in the format:
+```
+[object_gender, lineage_gender, opposing_lineage_gender, voice_gender, "Character Name"]
+```
+and passing them to `determine_gender()`.
+
+
