@@ -181,7 +181,7 @@ All of these applications can help predict outcomes, though they have limitation
 
 # Python
 
-What is also provided is the gdsa.py file, which contains the full implementation of the Gary De’Snake Algorithm. You can run this file to test the algorithm in practice. Follow these steps to get started:
+What is also provided is the `gdsa.py` file, which contains the full implementation of the Gary De’Snake Algorithm. You can run this file to test the algorithm in practice. Follow these steps to get started:
 
 1. **Install Python** <br>
 Make sure Python 3.x is installed on your system. You can download it from https://www.python.org/downloads/￼.
